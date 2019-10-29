@@ -19,15 +19,10 @@ namespace Module2TP2
             int max = 100;
             int val;
             int userVal;
-            int replay;
             int bestScore = 50;
-            
-            int[][] plays = new int[20][];
 
-            for (int i = 0; i < plays.Length; i++)
-            {
-                plays[i] = new int[2];
-            }
+            int[] arrayVal = new int[20];
+            int[] arrayTries = new int[20];
 
             int currentPlay = -1;
 
@@ -76,15 +71,15 @@ namespace Module2TP2
                         }
 
                         Console.WriteLine("You find in {0} tries {1}", tries, bestScoreText.ToString());
-                        plays[currentPlay][0] = val;
-                        plays[currentPlay][1] = tries;
+                        arrayVal[currentPlay] = val;
+                        arrayTries[currentPlay] = tries;
                     }
 
                 } while (userVal != val);
 
             } while (!GetString().Equals("N"));
 
-            PrintHistory(data: plays, compteur: currentPlay);
+            PrintHistory(arrayVal: arrayVal, arrayTries: arrayTries, compteur: currentPlay + 1);
             Console.WriteLine("Thanks for playing");
             
             Console.ReadLine();
@@ -109,17 +104,11 @@ namespace Module2TP2
             return Console.ReadLine();
         }
 
-        private static void PrintHistory(int[][] data, int compteur = 20)
+        private static void PrintHistory(int[] arrayTries, int[] arrayVal, int compteur = 20)
         {
-            int loop = 1;
-            foreach (int[] game in data)
+            for (int i = 0; i < compteur; i++)
             {
-                Console.WriteLine("Partie N°{0} , valeur secrète={1} , trouvé en {2} coup(s).", loop, game[0], game[1]);
-                if (loop == compteur + 1)
-                {
-                    break;
-                }
-                loop++;
+                Console.WriteLine("Partie N°{0} , valeur secrète={1} , trouvé en {2} coup(s).", i + 1, arrayVal[i], arrayTries[i]);
             }
         }
     }
