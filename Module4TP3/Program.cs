@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module3TP1
+namespace Module4TP3
 {
     public class Program
     {
@@ -18,7 +18,7 @@ namespace Module3TP1
             int min = 0;
             int max = 100;
             int val;
-            int userVal;
+            int userVal = int.MinValue;
             int bestScore = 50;
 
             int[] arrayVal = new int[20];
@@ -36,11 +36,16 @@ namespace Module3TP1
 
                 do
                 {
-                    userVal = GetInt();
-                    if (userVal == -1)
+                    try
                     {
+                        userVal = GetInt();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
                         continue;
                     }
+
                     tries++;
 
                     if (userVal < val)
@@ -91,7 +96,7 @@ namespace Module3TP1
             Console.WriteLine("Choose an int value between {0} and {1}", 0, 100);
             if (!int.TryParse(Console.ReadLine(), out userVal))
             {
-                userVal = -1;
+                throw new Exception("Not an integer");
             }
 
             return userVal;

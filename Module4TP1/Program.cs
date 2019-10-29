@@ -17,7 +17,8 @@ namespace Module4TP1
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                StackOverflowException exception = new StackOverflowException(ex.Message, ex);
+                Console.WriteLine(exception);
             }
             finally
             {
