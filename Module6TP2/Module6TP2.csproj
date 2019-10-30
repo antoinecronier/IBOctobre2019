@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFB0E6CC-3AA7-4460-85EC-EE8C2CDC0D85}</ProjectGuid>
+    <ProjectGuid>{74019AF9-0AB5-494C-8041-DB47E759F354}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Module2Lecon1</RootNamespace>
-    <AssemblyName>Module2Lecon1</AssemblyName>
+    <RootNamespace>Module6TP2</RootNamespace>
+    <AssemblyName>Module6TP2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Module6\Voiture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Module6TP2ClassLibrary\Module6TP2ClassLibrary.csproj">
+      <Project>{7ad588a6-c3c9-4f61-8453-dd9e8b27a543}</Project>
+      <Name>Module6TP2ClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

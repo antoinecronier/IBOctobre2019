@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFB0E6CC-3AA7-4460-85EC-EE8C2CDC0D85}</ProjectGuid>
+    <ProjectGuid>{73031783-A99D-4201-AB42-3B6948C787C4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Module2Lecon1</RootNamespace>
-    <AssemblyName>Module2Lecon1</AssemblyName>
+    <RootNamespace>Module6TP1</RootNamespace>
+    <AssemblyName>Module6TP1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Module6\Voiture.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
