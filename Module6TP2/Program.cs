@@ -101,7 +101,7 @@ namespace Module6TP2
 
             if (personne != null)
             {
-                PrintHistory(arrayGame: arrayGame, compteur: currentPlay + 1, fileName: personne.Firstname+personne.Lastname+DateTime.Now.ToString());
+                PrintHistory(arrayGame: arrayGame, compteur: currentPlay + 1, fileName: personne.Firstname+personne.Lastname+DateTime.Now.ToString().Replace("/","").Replace(":","").Replace(" ",""));
             }
             else
             {
