@@ -21,6 +21,8 @@ namespace Module4TP2
             {
                 Console.WriteLine(ex);
             }
+
+            Console.ReadLine();
         }
     }
 }
