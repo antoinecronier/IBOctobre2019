@@ -13,12 +13,75 @@ namespace Module2Lecon1
     {
         public static void Main(string[] args)
         {
-            Module8Test();
+            Module8Test2();
+        }
+
+        public static void Module8Test1()
+        {
+            Mother[] motherTab = new Mother[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (i%2==0)
+                {
+                    motherTab[i] = new Mother(10, "mother", true);
+                }
+                else
+                {
+                    motherTab[i] = new Daughter1(10, "daughter", true);
+                }
+            }
+
+            foreach (var item in motherTab)
+            {
+                item.Print();
+            }
+
+            Console.ReadLine();
+        }
+
+        public static void Module8Test2()
+        {
+            Object[] motherTab = new Object[20];
+
+            for (int i = 0; i < 20; i++)
+            {
+                if (i % 4 == 0)
+                {
+                    motherTab[i] = new Mother(10, "mother", true);
+                }
+                else if (i % 4 == 1)
+                {
+                    motherTab[i] = new Daughter1(10, "daughter", true);
+                }
+                else if (i % 4 == 2)
+                {
+                    motherTab[i] = 10;
+                }
+                else
+                {
+                    motherTab[i] = new StringBuilder("je suis un string builder");
+                }
+            }
+
+            foreach (var item in motherTab)
+            {
+                if (item is Mother)
+                {
+                    (item as Mother).Print();
+                }
+                else
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+            Console.ReadLine();
         }
 
         public static void Module8Test()
         {
-            Mother mother = new Mother(10,"mother",true);
+            Mother mother = new Mother(10, "mother", true);
             mother.Print();
             mother.Print2();
 
@@ -82,7 +145,7 @@ namespace Module2Lecon1
             //Clone v1 to v2
             Voiture voiture2 = new Voiture(voiture1);
 
-            
+
         }
 
         public void Module2()
