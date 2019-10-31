@@ -73,7 +73,10 @@ namespace Module8TP2GestionRH
 
         public void SalaryIncrease(double increase)
         {
-            this.salary += increase;
+            if (increase > 0)
+            {
+                this.salary += increase;
+            }
         }
 
         public void Assignment(string assignment)
