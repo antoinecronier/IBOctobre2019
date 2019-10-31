@@ -1,4 +1,5 @@
 ﻿using Module2Lecon1.Module6;
+using Module2Lecon1.Module8;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,39 @@ namespace Module2Lecon1
 {
     public class Program
     {
+        public static void Main(string[] args)
+        {
+            Module8Test();
+        }
+
+        public static void Module8Test()
+        {
+            Mother mother = new Mother(10,"mother",true);
+            mother.Print();
+            mother.Print2();
+
+            Console.WriteLine("--------------");
+
+            Daughter1 daughter1 = new Daughter1(10, "daughter1", true);
+            daughter1.Print();
+            daughter1.Print2();
+            //((Mother)daughter1).MyProperty1 = "mother";
+            ((Mother)daughter1).Print();
+            ((Mother)daughter1).Print2();
+
+            Console.WriteLine("--------------");
+
+            DaughterDaughter1 daughterDaughter1 = new DaughterDaughter1(10, "daughterdaughter1", true);
+            daughterDaughter1.Print();
+            daughterDaughter1.Print2();
+            ((Daughter1)daughterDaughter1).Print();
+            ((Daughter1)daughterDaughter1).Print2();
+            ((Mother)daughterDaughter1).Print();
+            ((Mother)daughterDaughter1).Print2();
+
+            Console.ReadLine();
+        }
+
         public enum MyEnum
         {
             Val1,
@@ -35,11 +69,6 @@ namespace Module2Lecon1
             }
 
             Console.ReadLine();
-        }
-
-        public static void Main(string[] args)
-        {
-            Module6Test();
         }
 
         private static void Module6Test()

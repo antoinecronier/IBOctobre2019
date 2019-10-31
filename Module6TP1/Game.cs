@@ -51,7 +51,8 @@
         #region Functions
         public string Info()
         {
-            return string.Format("valeur secrète {0} , trouvé en {1} coup(s).",valToFind, tries);
+            //return "valeur secrète " + valToFind + ", trouvé en " + tries + " coup(s).";
+            return string.Format("valeur secrète {0}, trouvé en {1} coup(s).",valToFind, tries);
         }
         #endregion
 
