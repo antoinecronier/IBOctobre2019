@@ -11,6 +11,7 @@ namespace Module2Lecon1.Module8
         protected int myVar;
         protected string myVar1;
         protected bool myVar2;
+        private IActions actions;
 
         public int MyProperty
         {
@@ -28,6 +29,12 @@ namespace Module2Lecon1.Module8
         {
             get { return myVar2; }
             set { myVar2 = value; }
+        }
+
+        public IActions Actions
+        {
+            get { return actions; }
+            set { actions = value; }
         }
 
         public Mother()
@@ -50,5 +57,12 @@ namespace Module2Lecon1.Module8
         {
             Console.WriteLine("Print2 from Mother " + this.myVar1);
         }
+
+        public virtual void Print3()
+        {
+            Console.WriteLine("Print3 from Mother " + this.myVar1);
+        }
+
+        public abstract void Print4();
     }
 }

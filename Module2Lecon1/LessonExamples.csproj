@@ -45,8 +45,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Module6\Voiture.cs" />
+    <Compile Include="Module8\ClassWithInterface.cs" />
     <Compile Include="Module8\DaughterDaughter1.cs" />
     <Compile Include="Module8\Daughter1.cs" />
+    <Compile Include="Module8\IActions.cs" />
     <Compile Include="Module8\Mother.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

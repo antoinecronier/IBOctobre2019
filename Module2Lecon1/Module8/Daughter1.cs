@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Module2Lecon1.Module8
 {
-    public class Daughter1 : Mother
+    public class Daughter1 : Mother, IActions
     {
         //private new string myVar1;
 
@@ -34,7 +34,7 @@ namespace Module2Lecon1.Module8
 
         public Daughter1()
         {
-
+            this.Actions = new ClassWithInterface();
         }
 
         public override void Print()
@@ -46,6 +46,28 @@ namespace Module2Lecon1.Module8
         public new void Print2()
         {
             Console.WriteLine("Print2 from Daughter1 " + this.myVar1);
+        }
+
+        public sealed override void Print3()
+        {
+            base.Print3();
+        }
+
+        public string DoSomething()
+        {
+            string result = "DoSomething from Daughter1";
+            Console.WriteLine(result);
+            return result;
+        }
+
+        public virtual void DoSomething1(string data)
+        {
+            Console.WriteLine(data + " from daughter1");
+        }
+
+        public override void Print4()
+        {
+            Console.WriteLine("Print4 from Daughter 1");
         }
     }
 }

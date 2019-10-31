@@ -16,5 +16,15 @@ namespace Module2Lecon1.Module8
         {
             base.Print();
         }
+
+        public new void Print3()
+        {
+            base.Print3();
+        }
+
+        public override void DoSomething1(string data)
+        {
+            base.DoSomething1(data);
+        }
     }
 }

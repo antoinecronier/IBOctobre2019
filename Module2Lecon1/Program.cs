@@ -13,10 +13,23 @@ namespace Module2Lecon1
     {
         public static void Main(string[] args)
         {
-            Module8Test2();
+            Module8Test3();
         }
 
-        public static void Module8Test1()
+        public static void Module8Test3()
+        {
+            IActions daughter1 = new Daughter1();
+            IActions classWithInterface = new ClassWithInterface();
+
+            daughter1.DoSomething();
+            classWithInterface.DoSomething();
+
+            //(daughter1 as Daughter1).DoSomething()
+            //(daughter1 as Mother).DoSomething();
+            Console.ReadLine();
+        }
+
+            public static void Module8Test1()
         {
             Mother[] motherTab = new Mother[5];
 
