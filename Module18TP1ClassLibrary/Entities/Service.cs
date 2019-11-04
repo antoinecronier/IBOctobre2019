@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,7 @@ namespace Module18TP1ClassLibrary.Entities
         private long serviceId;
         private string name;
         private string description;
+        private List<Employee> employees;
         #endregion
 
         #region Properties
@@ -46,6 +48,13 @@ namespace Module18TP1ClassLibrary.Entities
             get { return name; }
             set { name = value; }
         }
+
+        [JsonIgnore]
+        public List<Employee> Employees
+        {
+            get { return employees; }
+            set { employees = value; }
+        }
         #endregion
 
         #region Constructors
@@ -54,7 +63,7 @@ namespace Module18TP1ClassLibrary.Entities
         /// </summary>
         public Service()
         {
-
+            this.Employees = new List<Employee>();
         }
         #endregion
 
@@ -62,11 +71,13 @@ namespace Module18TP1ClassLibrary.Entities
         #endregion
 
         #region Functions
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
         #endregion
 
         #region Events
         #endregion
-
-
     }
 }

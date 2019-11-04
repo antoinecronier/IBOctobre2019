@@ -103,11 +103,13 @@ namespace Module18TP1ClassLibrary.Entities
         #endregion
 
         #region Functions
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
         #endregion
 
         #region Events
         #endregion
-
-
     }
 }
