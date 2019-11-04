@@ -46,6 +46,11 @@ namespace Module18TP1ClassLibrary.Database
         #endregion
 
         #region Functions
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().HasRequired(x => x.Department);
+            base.OnModelCreating(modelBuilder);
+        }
         #endregion
 
         #region Events

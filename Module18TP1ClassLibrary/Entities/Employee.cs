@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Module18TP1ClassLibrary.Validators;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,24 +33,29 @@ namespace Module18TP1ClassLibrary.Entities
         #endregion
 
         #region Properties
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long EmployeeId
         {
             get { return employeeId; }
             set { employeeId = value; }
         }
-
+        
+        [Required]
         public Service Department
         {
             get { return department; }
             set { department = value; }
         }
 
+        [Required]
         public string Function
         {
             get { return function; }
             set { function = value; }
         }
 
+        [SalaryValidator]
         public float Salary
         {
             get { return salary; }
@@ -66,12 +74,14 @@ namespace Module18TP1ClassLibrary.Entities
             set { dateOfBirth = value; }
         }
 
+        [Required]
         public string Lastname
         {
             get { return lastname; }
             set { lastname = value; }
         }
 
+        [Required]
         public string Firstname
         {
             get { return firstname; }

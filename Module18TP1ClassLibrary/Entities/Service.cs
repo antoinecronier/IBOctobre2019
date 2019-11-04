@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,8 @@ namespace Module18TP1ClassLibrary.Entities
         #endregion
 
         #region Properties
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ServiceId
         {
             get { return serviceId; }
@@ -36,6 +40,7 @@ namespace Module18TP1ClassLibrary.Entities
             set { description = value; }
         }
 
+        [Required]
         public string Name
         {
             get { return name; }

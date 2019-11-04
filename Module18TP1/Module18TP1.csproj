@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Module18TP1ClassLibrary\Module18TP1ClassLibrary.csproj">
+      <Project>{7a1d8d41-51bf-4990-a62b-8ab30f2451de}</Project>
+      <Name>Module18TP1ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

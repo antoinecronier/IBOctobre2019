@@ -55,6 +55,7 @@
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\SalaryValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
