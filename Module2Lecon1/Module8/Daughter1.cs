@@ -65,9 +65,9 @@ namespace Module2Lecon1.Module8
             Console.WriteLine(data + " from daughter1");
         }
 
-        public override void Print4()
-        {
-            Console.WriteLine("Print4 from Daughter 1");
-        }
+        //public override void Print4()
+        //{
+        //    Console.WriteLine("Print4 from Daughter 1");
+        //}
     }
 }

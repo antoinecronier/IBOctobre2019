@@ -1,6 +1,7 @@
 ﻿using Module18TP1ClassLibrary.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,11 @@ namespace Module18TP1ClassLibrary.Database
                     employee.DateOfBirth = DateTime.Now;
                     employee.Department = this.Services.Find(random.Next(1, this.Services.Count()));
                     this.Employees.Add(employee);
+
+                    //ValidationContext vc = new ValidationContext(employee);
+                    //ICollection<ValidationResult> results = new List<ValidationResult>();
+                    //Validator.TryValidateObject(employee, vc, results, true);
+
                     this.SaveChanges();
                 }
             }

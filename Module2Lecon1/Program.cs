@@ -13,7 +13,9 @@ namespace Module2Lecon1
     {
         public static void Main(string[] args)
         {
-            Module8Test3();
+            Module19.Module19 m19 = new Module19.Module19();
+            m19.LinqExample();
+            Console.ReadLine();
         }
 
         public static void Module8Test3()

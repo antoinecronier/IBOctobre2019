@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Module19\Module19.cs" />
     <Compile Include="Module6\Voiture.cs" />
     <Compile Include="Module8\ClassWithInterface.cs" />
     <Compile Include="Module8\DaughterDaughter1.cs" />

@@ -63,6 +63,6 @@ namespace Module2Lecon1.Module8
             Console.WriteLine("Print3 from Mother " + this.myVar1);
         }
 
-        public abstract void Print4();
+        //public abstract void Print4();
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Validation;
 
 namespace Module18TP1.Menus
 {
@@ -96,7 +97,11 @@ namespace Module18TP1.Menus
                         switch (subChoice)
                         {
                             case 1:
-                                MenuUtils.Insert<Service>(MenuUtils.BuildService());
+                                using (var db = new EmployeeContext())
+                                {
+                                    db.Services.Add(MenuUtils.BuildService());
+                                    db.SaveChanges();
+                                }
                                 break;
                             case 2:
                                 using (var db = new EmployeeContext())
@@ -133,7 +138,15 @@ namespace Module18TP1.Menus
                                         db.Entry(item).State = EntityState.Modified;
                                     }
 
-                                    db.SaveChanges();
+                                    try
+                                    {
+                                        db.SaveChanges();
+                                    }
+                                    catch (DbEntityValidationException e)
+                                    {
+                                        Console.WriteLine(e);
+                                    }
+                                   
                                 }
                                 break;
                             case 5:
