@@ -45,7 +45,14 @@ namespace Module19Tp1.Menu
                 case 1:
                     using (var db = new EmployeeContext())
                     {
-                        Console.WriteLine(func.Invoke(db));
+                        try
+                        {
+                            Console.WriteLine(func.Invoke(db));
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                        }
                     }
                     break;
                 case 2:
@@ -60,7 +67,17 @@ namespace Module19Tp1.Menu
         {
             using (var db = new EmployeeContext())
             {
-                foreach (var item in func.Invoke(db))
+                List<T> items = new List<T>(); ;
+                try
+                {
+                    items = func.Invoke(db);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                
+                foreach (var item in items)
                 {
                     Console.WriteLine(item);
                 }
@@ -167,7 +184,10 @@ namespace Module19Tp1.Menu
                 case 2:
                     using (var db = new EmployeeContext())
                     {
-                        Console.WriteLine(db.Employees.AsNoTracking().Include(x => x.Department).Where(x => x.Department.ServiceId == serviceId).Sum(x => x.Salary));
+                        if (db.Employees.Include(x => x.Department).Where(x => x.Department.ServiceId == serviceId).Count() > 0)
+                        {
+                            Console.WriteLine(db.Employees.Include(x => x.Department).Where(x => x.Department.ServiceId == serviceId).Sum(x => x.Salary));
+                        }
                     }
                     break;
                 case 3:
