@@ -68,6 +68,7 @@ namespace Module18TP1ClassLibrary.Entities
             set { city = value; }
         }
 
+        [Column(TypeName = "datetime2")]
         public DateTime DateOfBirth
         {
             get { return dateOfBirth; }

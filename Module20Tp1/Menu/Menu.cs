@@ -1,6 +1,6 @@
 ﻿using Module18TP1ClassLibrary.Database;
 using Module18TP1ClassLibrary.Entities;
-using Module19TP1.Menus.Utils;
+using Module20TP1.Menus.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module19Tp1.Menu
+namespace Module20Tp1.Menu
 {
     public class Menu
     {
@@ -91,16 +91,15 @@ namespace Module19Tp1.Menu
 
         public void EmployeeMenu()
         {
-            int? choice = MenuUtils.GetIntChoice(MenuUtils.EmployeeMenu(), 1, 3);
-
-            PrintFromDb<Employee>((EmployeeContext db) =>
-            {
-                return db.Employees.AsNoTracking().ToList();
-            });
-
+            int? choice = MenuUtils.GetIntChoice(MenuUtils.EmployeeMenu(), 1, 4);
+            
             switch (choice)
             {
                 case 1:
+                    PrintFromDb<Employee>((EmployeeContext db) =>
+                    {
+                        return db.Employees.AsNoTracking().ToList();
+                    });
                     SalaryChargeMenu((EmployeeContext db) =>
                     {
                         return db.Employees.AsNoTracking().Sum(x => x.Salary);
@@ -110,6 +109,9 @@ namespace Module19Tp1.Menu
                     EmployeeMenuFiltered();
                     break;
                 case 3:
+                    EmployeeCudMenu();
+                    break;
+                case 4:
                     MainMenu();
                     break;
                 default:
@@ -165,6 +167,23 @@ namespace Module19Tp1.Menu
 
         private void ServiceMenu()
         {
+            int? choice = MenuUtils.GetIntChoice(MenuUtils.ServiceMenu(), 1, 3);
+            switch (choice)
+            {
+                case 1:
+                    ServiceMenuByService();
+                    break;
+                case 2:
+                    ServiceCudMenu();
+                    break;
+                case 3:
+                    MainMenu();
+                    break;
+            }
+        }
+
+        private void ServiceMenuByService()
+        {
             PrintFromDb<Service>((EmployeeContext db) =>
             {
                 return db.Services.AsNoTracking().ToList();
@@ -172,7 +191,7 @@ namespace Module19Tp1.Menu
 
             int? serviceId = MenuUtils.GetIntChoice("Choose service by id", 1, int.MaxValue);
 
-            int? choice = MenuUtils.GetIntChoice(MenuUtils.ServiceMenu(), 1, 3);
+            int? choice = MenuUtils.GetIntChoice(MenuUtils.ServiceMenuByService(), 1, 3);
 
             Console.WriteLine("Service " + serviceId + " selected");
             PrintFromDb<Service>((EmployeeContext db) =>
@@ -190,7 +209,7 @@ namespace Module19Tp1.Menu
                     SalaryChargeMenu((EmployeeContext db) =>
                     {
                         return db.Employees.AsNoTracking().Include(x => x.Department).Where(x => x.Department.ServiceId == serviceId).Sum(x => x.Salary);
-                    }, ServiceMenu);
+                    }, ServiceMenuByService);
                     break;
                 case 2:
                     using (var db = new EmployeeContext())
@@ -202,7 +221,121 @@ namespace Module19Tp1.Menu
                     }
                     break;
                 case 3:
-                    MainMenu();
+                    ServiceMenu();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void EmployeeCudMenu()
+        {
+            int? choice = MenuUtils.GetIntChoice(MenuUtils.CudMenu(), 1, 4);
+
+            switch (choice)
+            {
+                case 1:
+                    using (var db = new EmployeeContext())
+                    {
+                        db.Employees.Add(MenuUtils.BuildEmployeeWithService(db));
+                        db.SaveChanges();
+                    }
+                    break;
+                case 2:
+                    PrintFromDb<Employee>((EmployeeContext db) =>
+                    {
+                        return db.Employees.AsNoTracking().ToList();
+                    });
+                    using (var db = new EmployeeContext())
+                    {
+                        Employee empToUpdate = null;
+                        do
+                        {
+                            empToUpdate = db.Employees.Find(MenuUtils.GetIntChoice("Select employee to update by id", 1, int.MaxValue));
+                        } while (empToUpdate==null);
+
+                        Employee newValues = MenuUtils.BuildEmployeeWithService(db);
+                        newValues.EmployeeId = empToUpdate.EmployeeId;
+                        db.Entry(empToUpdate).CurrentValues.SetValues(newValues);
+                        db.SaveChanges();
+                    }
+                    break;
+                case 3:
+                    PrintFromDb<Employee>((EmployeeContext db) =>
+                    {
+                        return db.Employees.AsNoTracking().ToList();
+                    });
+                    using (var db = new EmployeeContext())
+                    {
+                        Employee empToDelete = null;
+                        do
+                        {
+                            empToDelete = db.Employees.Find(MenuUtils.GetIntChoice("Select employee to delete by id", 1, int.MaxValue));
+                        } while (empToDelete == null);
+
+                        db.Entry(empToDelete).State = EntityState.Deleted;
+                        db.SaveChanges();
+                    }
+                    break;
+                case 4:
+                    EmployeeMenu();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ServiceCudMenu()
+        {
+            int? choice = MenuUtils.GetIntChoice(MenuUtils.CudMenu(), 1, 4);
+
+            switch (choice)
+            {
+                case 1:
+                    using (var db = new EmployeeContext())
+                    {
+                        db.Services.Add(MenuUtils.BuildService());
+                        db.SaveChanges();
+                    }
+                    break;
+                case 2:
+                    PrintFromDb<Service>((EmployeeContext db) =>
+                    {
+                        return db.Services.AsNoTracking().ToList();
+                    });
+                    using (var db = new EmployeeContext())
+                    {
+                        Service srvToUpdate = null;
+                        do
+                        {
+                            srvToUpdate = db.Services.Find(MenuUtils.GetIntChoice("Select servvice to update by id", 1, int.MaxValue));
+                        } while (srvToUpdate == null);
+
+                        Service newValues = MenuUtils.BuildService();
+                        newValues.ServiceId = srvToUpdate.ServiceId;
+                        db.Entry(srvToUpdate).CurrentValues.SetValues(newValues);
+                        db.SaveChanges();
+                    }
+                    break;
+                case 3:
+                    PrintFromDb<Service>((EmployeeContext db) =>
+                    {
+                        return db.Services.AsNoTracking().ToList();
+                    });
+                    using (var db = new EmployeeContext())
+                    {
+                        Service srvToDelete = null;
+                        do
+                        {
+                            srvToDelete = db.Services.Find(MenuUtils.GetIntChoice("Select employee to delete by id", 1, int.MaxValue));
+                        } while (srvToDelete == null);
+
+                        db.Entry(srvToDelete).State = EntityState.Deleted;
+                        db.SaveChanges();
+                    }
+                    break;
+                case 4:
+                    ServiceMenu();
                     break;
                 default:
                     break;
