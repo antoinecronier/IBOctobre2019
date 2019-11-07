@@ -52,7 +52,7 @@ namespace Module19Tp1.Menu
                     {
                         try
                         {
-                            Console.WriteLine(func.Invoke(db));
+                            Console.WriteLine(func.Invoke(db) + "€");
                         }
                         catch (Exception e)
                         {
@@ -72,7 +72,7 @@ namespace Module19Tp1.Menu
         {
             using (var db = new EmployeeContext())
             {
-                List<T> items = new List<T>(); ;
+                List<T> items = new List<T>();
                 try
                 {
                     items = func.Invoke(db);

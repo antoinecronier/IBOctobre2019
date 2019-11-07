@@ -17,7 +17,8 @@ namespace Module19TP1.Menus.Utils
             builder.Append("Choose between\n");
             builder.Append("1 - employee\n");
             builder.Append("2 - service\n");
-            builder.Append("3 - quit\n");
+            builder.Append("3 - salary charge\n");
+            builder.Append("4 - quit\n");
 
             return builder.ToString();
         }
