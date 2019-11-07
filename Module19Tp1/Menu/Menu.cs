@@ -14,11 +14,10 @@ namespace Module19Tp1.Menu
     {
         public void MainMenu()
         {
-            List<Action> navigation = new List<Action>();
             int? choice = null;
             do
             {
-                choice = MenuUtils.GetIntChoice(MenuUtils.BaseChoiceMenu(), 1, 3);
+                choice = MenuUtils.GetIntChoice(MenuUtils.BaseChoiceMenu(), 1, 4);
                 switch (choice)
                 {
                     case 1:
@@ -28,6 +27,12 @@ namespace Module19Tp1.Menu
                         ServiceMenu();
                         break;
                     case 3:
+                        using (var db = new EmployeeContext())
+                        {
+                            Console.WriteLine(db.Employees.AsNoTracking().Sum(x => x.Salary));
+                        }
+                        break;
+                    case 4:
                         Environment.Exit(0);
                         break;
                     default:
