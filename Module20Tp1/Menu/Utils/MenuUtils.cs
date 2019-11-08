@@ -105,7 +105,7 @@ namespace Module20TP1.Menus.Utils
             {
                 Console.WriteLine(question);
                 userChoice = Console.ReadLine();
-            } while (!int.TryParse(userChoice, out outResult) || result < min || result > max);
+            } while (!int.TryParse(userChoice, out outResult) || outResult < min || outResult > max);
 
             result = outResult;
 

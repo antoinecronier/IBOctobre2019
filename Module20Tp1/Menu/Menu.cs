@@ -308,7 +308,7 @@ namespace Module20Tp1.Menu
                         Service srvToUpdate = null;
                         do
                         {
-                            srvToUpdate = db.Services.Find(MenuUtils.GetIntChoice("Select servvice to update by id", 1, int.MaxValue));
+                            srvToUpdate = db.Services.Find(MenuUtils.GetIntChoice("Select service to update by id", 1, int.MaxValue));
                         } while (srvToUpdate == null);
 
                         Service newValues = MenuUtils.BuildService();
@@ -327,10 +327,48 @@ namespace Module20Tp1.Menu
                         Service srvToDelete = null;
                         do
                         {
-                            srvToDelete = db.Services.Find(MenuUtils.GetIntChoice("Select employee to delete by id", 1, int.MaxValue));
+                            srvToDelete = db.Services.Find(MenuUtils.GetIntChoice("Select service to delete by id", 1, int.MaxValue));
                         } while (srvToDelete == null);
 
                         db.Entry(srvToDelete).State = EntityState.Deleted;
+
+                        //Check if services remaining
+                        if (db.Employees.AsNoTracking().Include(x => x.Department).Where(x => x.Department.ServiceId == srvToDelete.ServiceId).Count() > 0)
+                        {
+                            PrintFromDb<Employee>((EmployeeContext db1) =>
+                            {
+                                return db.Employees.AsNoTracking().Include(x => x.Department).Where(x => x.Department.ServiceId == srvToDelete.ServiceId).ToList();
+                            });
+
+                            Console.WriteLine("------------------------------------");
+
+                            int? changeId;
+                            Service newService;
+                            do
+                            {
+                                PrintFromDb<Service>((EmployeeContext db1) =>
+                                {
+                                    return db.Services.AsNoTracking().Where(x => x.ServiceId != srvToDelete.ServiceId).ToList();
+                                });
+
+                                changeId = MenuUtils.GetIntChoice("Select new service id for linked employees", 1, int.MaxValue);
+                                newService = db.Services.Find(changeId);
+                            } while (newService == null || changeId == srvToDelete.ServiceId);
+
+                            foreach (var item in db.Employees.Include(x => x.Department).Where(x => x.Department.ServiceId == srvToDelete.ServiceId).ToList())
+                            {
+                                item.Department = newService;
+                                db.Entry(item).State = EntityState.Modified;
+                            }
+                        }
+                        else
+                        {
+                            //Delete linked employees
+                            foreach (var item in db.Employees.Include(x => x.Department).Where(x => x.Department.ServiceId == srvToDelete.ServiceId).ToList())
+                            {
+                                db.Entry(item).State = EntityState.Deleted;
+                            }
+                        }
                         db.SaveChanges();
                     }
                     break;
