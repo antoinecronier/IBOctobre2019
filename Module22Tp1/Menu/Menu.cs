@@ -1,6 +1,7 @@
 ﻿using Module18TP1ClassLibrary.Database;
 using Module18TP1ClassLibrary.Entities;
-using Module20TP1.Menus.Utils;
+using Module22Tp1.Menus.Utils;
+using Module22Tp1.WebService;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,11 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module20Tp1.Menu
+namespace Module22Tp1.Menu
 {
     public class Menu
     {
-        public void MainMenu()
+        public WebServiceManager<Employee> EmployeesWebService { get; set; }
+        public WebServiceManager<Service> ServicesWebService { get; set; }
+
+        public Menu()
+        {
+            this.EmployeesWebService = new WebServiceManager<Employee>("http://localhost:54223/api/");
+            this.ServicesWebService = new WebServiceManager<Service>("http://localhost:54223/api/");
+        }
+
+        public async void MainMenu()
         {
             int? choice = null;
             do
@@ -27,10 +37,8 @@ namespace Module20Tp1.Menu
                         ServiceMenu();
                         break;
                     case 3:
-                        using (var db = new EmployeeContext())
-                        {
-                            Console.WriteLine(db.Employees.AsNoTracking().Sum(x => x.Salary));
-                        }
+                        List<Employee> employees = await EmployeesWebService.Get();
+                        Console.WriteLine(employees.Sum(x => x.Salary));
                         break;
                     case 4:
                         Environment.Exit(0);

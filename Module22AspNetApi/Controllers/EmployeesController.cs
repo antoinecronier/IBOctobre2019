@@ -24,6 +24,20 @@ namespace Module22AspNetApi.Controllers
             return db.Employees;
         }
 
+        [HttpGet]
+        [Route("/EmployeesWithService")]
+        public IQueryable<Employee> GetEmployeesWithService()
+        {
+            return db.Employees.Include(x => x.Department);
+        }
+
+        [HttpGet]
+        [Route("/EmployeesByLastname")]
+        public IQueryable<Employee> GetEmployeesByLastname(string choice)
+        {
+            return db.Employees.Where(x => x.Lastname.Contains(choice));
+        }
+
         // GET: api/Employees/5
         [ResponseType(typeof(Employee))]
         public async Task<IHttpActionResult> GetEmployee(long id)
