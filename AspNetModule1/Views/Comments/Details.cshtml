@@ -13,18 +13,7 @@
 </head>
 <body>
     <div>
-        <h4>Comment</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Data)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Data)
-            </dd>
-    
-        </dl>
+        @Html.Partial("~/Views/Shared/Comments/_CommentDisplay.cshtml",Model)
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.CommentaireId }) |

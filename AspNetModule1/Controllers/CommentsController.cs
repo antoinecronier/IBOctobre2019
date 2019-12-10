@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AspNetModule1.Models;
+using AspNetModule1.Filters;
 
 namespace AspNetModule1.Controllers
 {
@@ -16,9 +17,10 @@ namespace AspNetModule1.Controllers
         private ProjectDb db = new ProjectDb();
 
         // GET: Comments
+        [LogFilter]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Comments.ToListAsync());
+            return View(/*await db.Comments.ToListAsync()*/);
         }
 
         // GET: Comments/Details/5
@@ -114,6 +116,12 @@ namespace AspNetModule1.Controllers
             db.Comments.Remove(comment);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetList()
+        {
+            return PartialView("~/Views/Shared/Comments/_CommentList.cshtml", db.Comments.ToList());
         }
 
         protected override void Dispose(bool disposing)

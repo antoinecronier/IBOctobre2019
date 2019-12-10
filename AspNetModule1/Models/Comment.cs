@@ -10,6 +10,8 @@ namespace AspNetModule1.Models
     public class Comment
     {
         private int commentaireId;
+        private string data;
+        private Project project;
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,8 +21,6 @@ namespace AspNetModule1.Models
             set { commentaireId = value; }
         }
 
-        private string data;
-
         [StringLength(200)]
         public string Data
         {
@@ -28,13 +28,10 @@ namespace AspNetModule1.Models
             set { data = value; }
         }
 
-        private Project project;
-
         public Project Project
         {
             get { return project; }
             set { project = value; }
         }
-
     }
 }

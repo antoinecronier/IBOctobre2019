@@ -25,7 +25,7 @@ namespace AspNetModule1.Models
         [Required]
         [DisplayName("Intitulé")]
         [RegularExpression(@"^[A-Z]{2}\d{5}$")]
-        public string Tile
+        public string Title
         {
             get { return title; }
             set { title = value; }

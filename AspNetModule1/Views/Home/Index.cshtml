@@ -8,6 +8,22 @@
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
+@{
+    
+    for (int row = 0; row < 3; row++)
+    {
+        @:<div class="row">
+            for (int column = 0; column < 3; column++)
+            {
+                @:<div class="col-md-4">
+                @:<div>@ViewBag.items[column]</div>
+                //this.Write(ViewBag.items[column]);
+                @:</div>
+            }
+        @:</div>
+    }
+}
+
 <div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>

@@ -47,7 +47,7 @@ namespace AspNetModule1.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProjectId,Tile,StartDate,DeliveryDate,NbDays,Description")] Project project)
+        public async Task<ActionResult> Create([Bind(Include = "ProjectId,Title,StartDate,DeliveryDate,NbDays,Description")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace AspNetModule1.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProjectId,Tile,StartDate,DeliveryDate,NbDays,Description")] Project project)
+        public async Task<ActionResult> Edit([Bind(Include = "ProjectId,Title,StartDate,DeliveryDate,NbDays,Description")] Project project)
         {
             if (ModelState.IsValid)
             {

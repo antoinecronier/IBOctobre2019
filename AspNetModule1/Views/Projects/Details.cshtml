@@ -1,67 +1,58 @@
 ﻿@model AspNetModule1.Models.Project
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Projets détails";
+    ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
+<h2>Details</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Project</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Tile)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Tile)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.StartDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DeliveryDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DeliveryDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NbDays)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NbDays)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-    
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

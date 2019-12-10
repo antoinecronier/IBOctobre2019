@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +11,13 @@ namespace AspNetModule1.Controllers
     {
         public ActionResult Index()
         {
+            List<String> strings = new List<string>();
+            strings.Add("s1");
+            strings.Add("s2");
+            strings.Add("s3");
+
+            ViewBag.Items = strings.ToArray();
+
             return View();
         }
 
