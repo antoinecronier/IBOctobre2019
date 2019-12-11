@@ -41,6 +41,7 @@ namespace AspNetModule1.Controllers
         // GET: Comments/Create
         public ActionResult Create()
         {
+            ViewBag.Projects = db.Projects.ToList();
             return View();
         }
 
@@ -49,10 +50,11 @@ namespace AspNetModule1.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CommentaireId,Data")] Comment comment)
+        public async Task<ActionResult> Create([Bind(Include = "CommentaireId,Data")] Comment comment, int? projectId)
         {
             if (ModelState.IsValid)
             {
+                comment.Project = db.Projects.Find(projectId);
                 db.Comments.Add(comment);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

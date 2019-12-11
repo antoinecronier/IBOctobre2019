@@ -18,7 +18,7 @@ namespace AspNetModule1.Controllers
         // GET: Projects
         public async Task<ActionResult> Index()
         {
-            return View(await db.Projects.ToListAsync());
+            return View(await db.Projects.Include(x => x.Employees).Include(x => x.Comments).ToListAsync());
         }
 
         // GET: Projects/Details/5
@@ -39,6 +39,8 @@ namespace AspNetModule1.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
+            ViewBag.Comments = db.Comments.ToList();
+            ViewBag.Employees = db.Employees.ToList();
             return View();
         }
 
@@ -47,10 +49,26 @@ namespace AspNetModule1.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProjectId,Title,StartDate,DeliveryDate,NbDays,Description")] Project project)
+        public async Task<ActionResult> Create([Bind(Include = "ProjectId,Title,StartDate,DeliveryDate,NbDays,Description")] Project project, int[] employeesIds, int[] commentsIds)
         {
             if (ModelState.IsValid)
             {
+                if (employeesIds != null)
+                {
+                    foreach (var id in employeesIds)
+                    {
+                        project.Employees.Add(db.Employees.Include(x => x.Projects).FirstOrDefault(x => x.EmployeeId == id));
+                    }
+                }
+
+                if (commentsIds != null)
+                {
+                    foreach (var id in commentsIds)
+                    {
+                        project.Comments.Add(db.Comments.Include(x => x.Project).FirstOrDefault(x => x.CommentaireId == id));
+                    }
+                }
+
                 db.Projects.Add(project);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -114,6 +132,12 @@ namespace AspNetModule1.Controllers
             db.Projects.Remove(project);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetList()
+        {
+            return PartialView("~/Views/Shared/Projects/_ProjectList.cshtml", db.Projects.ToList());
         }
 
         protected override void Dispose(bool disposing)

@@ -90,5 +90,10 @@ namespace AspNetModule1.Models
             set { comments = value; }
         }
 
+        public Project()
+        {
+            this.employees = new List<Employee>();
+            this.comments = new List<Comment>();
+        }
     }
 }

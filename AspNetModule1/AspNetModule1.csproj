@@ -194,6 +194,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Shared\Comments\_CommentDisplay.cshtml" />
     <Content Include="Views\Shared\Comments\_CommentList.cshtml" />
+    <Content Include="Views\Shared\Employees\_EmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

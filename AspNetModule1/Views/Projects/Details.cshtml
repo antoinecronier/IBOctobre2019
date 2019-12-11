@@ -50,6 +50,16 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Employees)
+        </dt>
+
+        <dd>
+
+            @Html.Action("GetListByTitle", "Employees",new {
+           projectId = Model.ProjectId,
+       })
+        </dd>
     </dl>
 </div>
 <p>

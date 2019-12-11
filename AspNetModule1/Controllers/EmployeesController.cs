@@ -39,6 +39,7 @@ namespace AspNetModule1.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            ViewBag.Projects = db.Projects.ToList();
             return View();
         }
 
@@ -47,10 +48,18 @@ namespace AspNetModule1.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EmployeeId,Lastname,Firstname")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "EmployeeId,Lastname,Firstname")] Employee employee, int[] projectsIds)
         {
             if (ModelState.IsValid)
             {
+                if (projectsIds != null)
+                {
+                    foreach (var id in projectsIds)
+                    {
+                        employee.Projects.Add(db.Projects.Find(id));
+                    }
+                }
+                
                 db.Employees.Add(employee);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -114,6 +123,19 @@ namespace AspNetModule1.Controllers
             db.Employees.Remove(employee);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetList()
+        {
+            return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", db.Employees.ToList());
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetListByTitle(int projectId)
+        {
+            return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", 
+                db.Projects.Include(x => x.Employees).First(p => p.ProjectId == projectId).Employees);
         }
 
         protected override void Dispose(bool disposing)

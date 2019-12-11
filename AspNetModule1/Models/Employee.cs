@@ -40,6 +40,9 @@ namespace AspNetModule1.Models
             set { firstname = value; }
         }
 
+        [NotMapped]
+        public string FullName { get { return this.Lastname + " " + this.Firstname; } }
+
         private ICollection<Project> projects;
 
         public ICollection<Project> Projects
@@ -48,5 +51,9 @@ namespace AspNetModule1.Models
             set { projects = value; }
         }
 
+        public Employee()
+        {
+            this.projects = new List<Project>();
+        }
     }
 }
