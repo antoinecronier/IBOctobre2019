@@ -55,25 +55,35 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Employees, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.ListBoxFor(x => x.Employees,
-                new MultiSelectList(ViewBag.Employees, "EmployeeId", "FullName"),
+    @{
+        if (ViewBag.Employees != null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Employees, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.ListBoxFor(x => x.Employees,
+                        new MultiSelectList(ViewBag.Employees, "EmployeeId", "FullName"),
 
-                new { @class = "form-control", Name= "employeesIds" })
-        </div>
-    </div>
+                        new { @class = "form-control", Name= "employeesIds" })
+                </div>
+            </div>
+        }
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.ListBoxFor(x => x.Comments,
-                new MultiSelectList(ViewBag.Comments, "CommentaireId", "Data"),
+    @{
+        if (ViewBag.Comments != null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.ListBoxFor(x => x.Comments,
+                        new MultiSelectList(ViewBag.Comments, "CommentaireId", "Data"),
 
-                new { @class = "form-control", Name= "commentsIds" })
-        </div>
-    </div>
+                        new { @class = "form-control", Name= "commentsIds" })
+                </div>
+            </div>
+        }
+    }
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

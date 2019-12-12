@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetModule1.Models;
 using AspNetModule1.Filters;
+using AspNetModule1.ViewModels;
 
 namespace AspNetModule1.Controllers
 {
@@ -123,7 +124,7 @@ namespace AspNetModule1.Controllers
         [ChildActionOnly]
         public ActionResult GetList()
         {
-            return PartialView("~/Views/Shared/Comments/_CommentList.cshtml", db.Comments.ToList());
+            return PartialView("~/Views/Shared/Comments/_CommentList.cshtml", new CommentViewModel() { Datas = db.Comments.ToList()});
         }
 
         protected override void Dispose(bool disposing)

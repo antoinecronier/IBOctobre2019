@@ -1,15 +1,21 @@
-﻿@model IEnumerable<AspNetModule1.Models.Comment>
+﻿@model AspNetModule1.ViewModels.CommentViewModel
 
-@foreach (var item in Model)
+@foreach (var item in Model.Datas)
 {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", "Comments", new { id = item.CommentaireId }, new { }) |
-            @Html.ActionLink("Details", "Details", "Comments", new { id = item.CommentaireId }, new { }) |
-            @Html.ActionLink("Delete", "Delete", "Comments", new { id = item.CommentaireId }, new { })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data)
+    </td>
+    @{
+        if (Model.ShowActionLinks)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Comments", new { id = item.CommentaireId }, new { }) |
+                @Html.ActionLink("Details", "Details", "Comments", new { id = item.CommentaireId }, new { }) |
+                @Html.ActionLink("Delete", "Delete", "Comments", new { id = item.CommentaireId }, new { })
+            </td>
+        }
+    }
+
+</tr>
 }

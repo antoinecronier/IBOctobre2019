@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspNetModule1.Models.Comment>
+﻿@model AspNetModule1.ViewModels.CommentViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,7 +18,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Data)
+                @Html.DisplayNameFor(model => model.Data.Data)
             </th>
             <th></th>
         </tr>

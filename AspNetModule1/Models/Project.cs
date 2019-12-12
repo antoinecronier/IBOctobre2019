@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspNetModule1.Models.Validations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -37,6 +38,7 @@ namespace AspNetModule1.Models
         [DataType(DataType.Date)]
         [DisplayName("Date de début")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DateValidators("Now")]
         public DateTime StartDate
         {
             get { return startDate; }
@@ -49,6 +51,7 @@ namespace AspNetModule1.Models
         [DataType(DataType.Date)]
         [DisplayName("Date de livraison")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DateValidators("StartDate",DateValidators.DateValidatorMode.OverOrEqualToProperty)]
         public DateTime DeliveryDate
         {
             get { return deliveryDate; }
@@ -58,6 +61,7 @@ namespace AspNetModule1.Models
         private int nbDays;
 
         [DisplayName("Nombre de jour")]
+        [DateIntervalValidators("StartDate", "DeliveryDate")]
         public int NbDays
         {
             get { return nbDays; }
