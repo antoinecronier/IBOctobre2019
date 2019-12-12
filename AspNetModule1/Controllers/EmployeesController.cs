@@ -11,17 +11,22 @@ using AspNetModule1.Models;
 
 namespace AspNetModule1.Controllers
 {
+    [RoutePrefix("Employees")]
     public class EmployeesController : Controller
     {
         private ProjectDb db = new ProjectDb();
 
         // GET: Employees
+        [HttpGet]
+        [Route("Index")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Employees.ToListAsync());
         }
 
         // GET: Employees/Details/5
+        [HttpGet]
+        [Route("Details/{id}")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,6 +42,8 @@ namespace AspNetModule1.Controllers
         }
 
         // GET: Employees/Create
+        [HttpGet]
+        [Route("Create")]
         public ActionResult Create()
         {
             ViewBag.Projects = db.Projects.ToList();
@@ -47,6 +54,7 @@ namespace AspNetModule1.Controllers
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Route("Create")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "EmployeeId,Lastname,Firstname")] Employee employee, int[] projectsIds)
         {
@@ -69,6 +77,7 @@ namespace AspNetModule1.Controllers
         }
 
         // GET: Employees/Edit/5
+        [Route("Edit")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,6 +96,7 @@ namespace AspNetModule1.Controllers
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Route("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "EmployeeId,Lastname,Firstname")] Employee employee)
         {
@@ -100,6 +110,8 @@ namespace AspNetModule1.Controllers
         }
 
         // GET: Employees/Delete/5
+        [HttpGet]
+        [Route("Delete/{id}")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +148,31 @@ namespace AspNetModule1.Controllers
         {
             return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", 
                 db.Projects.Include(x => x.Employees).First(p => p.ProjectId == projectId).Employees);
+        }
+
+        public async Task<ActionResult> ListEmployees(string projectRef)
+        {
+            return View("Index", (await db.Projects.Include(x => x.Employees).FirstAsync(x => x.Title.Equals(projectRef))).Employees);
+        }
+
+        public ActionResult FindEmployees(string nom)
+        {
+            ActionResult result = null;
+            List<Employee> employees = db.Employees.Where(x => x.Lastname.Equals(nom)).ToList();
+            if (employees.Count == 1)
+            {
+                result = View("Details", employees.ElementAt(0));
+            }
+            else
+            {
+                if (employees.Count == 0)
+                {
+                    employees = db.Employees.Where(x => x.Lastname.Contains(nom)).ToList();
+                }
+                result = View("Listing", employees);
+            }
+            
+            return result;
         }
 
         protected override void Dispose(bool disposing)

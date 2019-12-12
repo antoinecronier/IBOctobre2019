@@ -11,6 +11,21 @@ namespace AspNetModule1
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "ListEmployeesByProject",
+                url: "Projects/{projectRef}",
+                defaults: new { controller = "Employees", action = "ListEmployees" },
+                constraints: new { projectRef = @"^[A-Z]{2}\d{5}$" }
+                );
+
+            routes.MapRoute(
+                name: "ListEmployeesByName",
+                url: "Employees/{nom}",
+                defaults: new { controller = "Employees", action = "FindEmployees" }
+                );
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
