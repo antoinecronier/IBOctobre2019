@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreModule1", "AspNet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetModule1", "AspNetModule1\AspNetModule1.csproj", "{15B35299-42A4-4ACD-BBA6-EA12B638AD07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetModule11Security", "AspNetModule11Security\AspNetModule11Security.csproj", "{03AD887F-3DF8-4B26-A12B-37F2D5F73382}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -597,6 +599,26 @@ Global
 		{15B35299-42A4-4ACD-BBA6-EA12B638AD07}.Release|x64.Build.0 = Release|Any CPU
 		{15B35299-42A4-4ACD-BBA6-EA12B638AD07}.Release|x86.ActiveCfg = Release|Any CPU
 		{15B35299-42A4-4ACD-BBA6-EA12B638AD07}.Release|x86.Build.0 = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|ARM.Build.0 = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|x64.Build.0 = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Debug|x86.Build.0 = Debug|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|ARM.ActiveCfg = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|ARM.Build.0 = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|ARM64.Build.0 = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|x64.ActiveCfg = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|x64.Build.0 = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|x86.ActiveCfg = Release|Any CPU
+		{03AD887F-3DF8-4B26-A12B-37F2D5F73382}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
