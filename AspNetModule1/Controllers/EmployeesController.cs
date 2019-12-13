@@ -138,9 +138,16 @@ namespace AspNetModule1.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult GetList()
+        public ActionResult GetList(List<Employee> employees)
         {
-            return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", db.Employees.ToList());
+            if (employees != null)
+            {
+                return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", employees);
+            }
+            else
+            {
+                return PartialView("~/Views/Shared/Employees/_EmployeeList.cshtml", db.Employees.ToList());
+            }
         }
 
         [ChildActionOnly]
@@ -150,9 +157,10 @@ namespace AspNetModule1.Controllers
                 db.Projects.Include(x => x.Employees).First(p => p.ProjectId == projectId).Employees);
         }
 
-        public async Task<ActionResult> ListEmployees(string projectRef)
+        public ActionResult ListEmployees(string projectRef)
         {
-            return View("Index", (await db.Projects.Include(x => x.Employees).FirstAsync(x => x.Title.Equals(projectRef))).Employees);
+            Project project = db.Projects.Include(x => x.Employees).First(x => x.Title.Equals(projectRef));
+            return View("Index", project.Employees);
         }
 
         public ActionResult FindEmployees(string nom)
@@ -168,6 +176,10 @@ namespace AspNetModule1.Controllers
                 if (employees.Count == 0)
                 {
                     employees = db.Employees.Where(x => x.Lastname.Contains(nom)).ToList();
+                }
+                if (employees.Count == 1)
+                {
+                    result = View("Details", employees.ElementAt(0));
                 }
                 result = View("Listing", employees);
             }
