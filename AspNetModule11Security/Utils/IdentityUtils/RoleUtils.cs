@@ -1,4 +1,5 @@
 ﻿using AspNetModule11Security.Models;
+using AspNetModule11Security.Models.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -12,7 +13,7 @@ namespace AspNetModule11Security.Utils.IdentityUtils
     {
         public static IdentityRole CreateOrGetRole(string roleName)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx = new SecurityDbContext())
             {
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ctx));
                 IdentityRole result = null;
@@ -28,11 +29,11 @@ namespace AspNetModule11Security.Utils.IdentityUtils
             }
         }
 
-        public static void AssignRoleToUser(IdentityRole role, ApplicationUser user)
+        public static void AssignRoleToUser(IdentityRole role, MyIdentityUser user)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx = new SecurityDbContext())
             {
-                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+                var userManager = new UserManager<MyIdentityUser>(new UserStore<MyIdentityUser>(ctx));
 
                 userManager.AddToRole(user.Id, role.Name);
             }
