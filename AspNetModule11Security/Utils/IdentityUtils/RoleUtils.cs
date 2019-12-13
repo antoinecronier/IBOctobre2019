@@ -29,6 +29,16 @@ namespace AspNetModule11Security.Utils.IdentityUtils
             }
         }
 
+        public static List<IdentityRole> GetRoles()
+        {
+            using (var ctx = new SecurityDbContext())
+            {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ctx));
+                
+                return roleManager.Roles.ToList();
+            }
+        }
+
         public static void AssignRoleToUser(IdentityRole role, MyIdentityUser user)
         {
             using (var ctx = new SecurityDbContext())

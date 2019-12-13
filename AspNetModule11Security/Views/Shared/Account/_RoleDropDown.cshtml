@@ -1,0 +1,11 @@
+﻿@model AspNetModule11Security.Models.IdentityRoleListViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(x => x.Roles,
+            new SelectList(Model.Roles, "Id", "Name"),
+            "Selectionner un role",
+            new { @class = "form-control", Name= "RoleId" })
+    </div>
+</div>

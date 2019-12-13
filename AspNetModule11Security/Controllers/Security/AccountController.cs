@@ -12,6 +12,7 @@ using AspNetModule11Security.Models;
 using AspNetModule11Security.Utils.IdentityUtils;
 using Microsoft.AspNet.Identity.EntityFramework;
 using AspNetModule11Security.Models.Security;
+using System.Collections.Generic;
 
 namespace AspNetModule11Security.Controllers
 {
@@ -111,11 +112,11 @@ namespace AspNetModule11Security.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new MyIdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new MyIdentityUser { UserName = model.UserName, Login = model.Login };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    IdentityRole defaultRole = RoleUtils.CreateOrGetRole("User");
+                    IdentityRole defaultRole = RoleUtils.CreateOrGetRole(model.Role);
                     RoleUtils.AssignRoleToUser(defaultRole, user);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -186,6 +187,15 @@ namespace AspNetModule11Security.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
+        }
+
+        [ChildActionOnly]
+        [Authorize(Roles = "Admin")]
+        public ActionResult RoleList()
+        {
+            IdentityRoleListViewModel vm = new IdentityRoleListViewModel();
+            vm.Roles = RoleUtils.GetRoles();
+            return PartialView("~/Views/Shared/Account/_RoleList.cshtml", vm);
         }
 
         protected override void Dispose(bool disposing)
