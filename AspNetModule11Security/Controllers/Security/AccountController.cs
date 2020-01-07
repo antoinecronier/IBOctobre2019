@@ -116,7 +116,7 @@ namespace AspNetModule11Security.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    IdentityRole defaultRole = RoleUtils.CreateOrGetRole(model.Role);
+                    IdentityRole defaultRole = RoleUtils.CreateOrGetRole(model.RoleId);
                     RoleUtils.AssignRoleToUser(defaultRole, user);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
