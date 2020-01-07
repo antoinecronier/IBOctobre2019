@@ -36,11 +36,14 @@ namespace UWPTP2
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
-            for (int i = 1; i < rand.Next(10,1000); i++)
+            int rowNb = rand.Next(10, 1000);
+            int columnNb = rand.Next(10, 1000);
+
+            for (int i = 0; i < rowNb; i++)
             {
                 this.mainGrid.RowDefinitions.Add(new RowDefinition());
             }
-            for (int i = 1; i < rand.Next(10, 1000); i++)
+            for (int i = 0; i < columnNb; i++)
             {
                 this.mainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
