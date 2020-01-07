@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,6 +23,22 @@ namespace UWPLesson1.Views
         public BasePageLoginUC()
         {
             this.InitializeComponent();
+            this.btnConnexion.Click += BtnConnexion_Click;
+            this.hellButton.PointerEntered += HellButton_PointerEntered;
+        }
+
+        private void HellButton_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Grid.SetColumn(this.hellButton, Grid.GetColumn(this.hellButton) + 1);
+            this.hellButton.UpdateLayout();
+            this.contentGrid.UpdateLayout();
+        }
+
+        private void BtnConnexion_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(this.inputLogin.Text);
+            Debug.WriteLine(this.inputPassword.Password);
+            this.txtBTitle.FontSize = this.txtBTitle.FontSize * 1.5;
         }
     }
 }

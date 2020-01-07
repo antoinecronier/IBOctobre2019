@@ -25,7 +25,53 @@ namespace UWPLesson1
         public MainPage()
         {
             this.InitializeComponent();
+            this.Loaded += MainPage_Loaded;
         }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            StackPanel stack = this.stackpanelContainer;
+
+            Button btn = new Button();
+
+            // UIElement
+            btn.Visibility = Visibility.Visible;
+            btn.Opacity = 0.3;
+            btn.Rotation = 10;
+            btn.CanDrag = false;
+
+            //FrameworkElement
+            btn.Width = 100; btn.Height = 100;
+            btn.MaxWidth = 200; btn.MaxHeight = 200;
+            btn.MinWidth = 5; btn.MinHeight = 5;
+            btn.Name = "myButton";
+            btn.VerticalAlignment = VerticalAlignment.Center;
+            btn.HorizontalAlignment = HorizontalAlignment.Stretch;
+            btn.Margin = new Thickness(5, 10, 15, 20);
+
+            // Button
+            btn.Content = "click me";
+
+            stack.Children.Add(btn);
+
+            this.txtB1.Text = "coucou";
+            this.txtB2.Text = "heyhey";
+
+            for (int i = 0; i < 10; i++)
+            {
+                Button btnLoop = new Button();
+                stack.Children.Add(btnLoop);
+            }
+        }
+
+
+
+
+
+
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

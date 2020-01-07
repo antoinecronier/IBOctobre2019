@@ -19,9 +19,9 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel>
-                <TextBlock Foreground="{StaticResource ResourceKey=brush1}" Text="{StaticResource greeting}"/>
-                <TextBlock Foreground="{StaticResource brush1}">COUCOU kfjsdofhsdiuhf</TextBlock>
+            <StackPanel x:Name="stackpanelContainer">
+                <TextBlock x:Name="txtB1" Foreground="{StaticResource ResourceKey=brush1}" Text="{StaticResource greeting}"/>
+                <TextBlock x:Name="txtB2" Foreground="{StaticResource brush1}">COUCOU kfjsdofhsdiuhf</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>COUCOU kfjsdofhsdiuhf</TextBlock>
                     <TextBlock>COUCOU kfjsdofhsdiuhf</TextBlock>

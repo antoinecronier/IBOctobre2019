@@ -31,7 +31,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition MaxWidth="200"/>
         </Grid.ColumnDefinitions>
-
+        <Button x:Name="hellButton" Grid.Column="0"/>
         <TextBlock Style="{StaticResource LoginUCTextblock}" x:Name="txtBTitle" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Connexion</TextBlock>
         <TextBlock Style="{StaticResource LoginUCTextblock}" x:Name="txtBLogin" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Login</TextBlock>
         <TextBox x:Name="inputLogin"  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"></TextBox>
