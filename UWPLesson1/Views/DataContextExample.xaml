@@ -9,10 +9,51 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <TextBox x:Name="txtB1" Text="{Binding Firstname, Mode=TwoWay}"/>
-        <TextBox x:Name="txtB2" Text="{Binding Lastname, Mode=TwoWay}"/>
-        <TextBlock x:Name="txtB3" Text="{Binding FullName, Mode=OneWay}"/>
+        <TextBox x:Name="txtB1" Text="{Binding User.Firstname, Mode=TwoWay}"/>
+        <TextBox x:Name="txtB2" Text="{Binding User.Lastname, Mode=TwoWay}"/>
+        <TextBlock x:Name="txtB3" Text="{Binding User.FullName, Mode=OneWay}"/>
         <Button x:Name="btn1">PrintToConsole</Button>
         <Button x:Name="btn2">Reset</Button>
+        <Button x:Name="btn3">AddToCombo</Button>
+        <ComboBox x:Name="comboboxDataBinding" ItemsSource="{Binding UserList}" PlaceholderText="Select it binding">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Firstname}"/>
+                        <TextBlock Text="{Binding Lastname}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ListView x:Name="lsitView" ItemsSource="{Binding UserList}">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock MinWidth="200" Text="Firstname"/>
+                        <TextBlock MinWidth="200" Text="Lastname"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ContextFlyout>
+                <Flyout>
+                    <StackPanel>
+                        <MenuFlyoutItem Text="Item1" Click="MenuFlyoutItem_Click"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Item2"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="Item3"></MenuFlyoutItem>
+                    </StackPanel>
+                </Flyout>
+            </ListView.ContextFlyout>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock MinWidth="200" Text="{Binding Firstname}"/>
+                        <TextBlock MinWidth="200" Text="{Binding Lastname}"/>
+                        <CheckBox/>
+                        <Button/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>
