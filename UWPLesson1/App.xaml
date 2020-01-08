@@ -4,4 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWPLesson1">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Views/Styles/LoginUCStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBlock" BasedOn="{StaticResource LoginUCTextblock}"></Style>
+            <Style TargetType="Button" BasedOn="{StaticResource LoginUCButton}"></Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

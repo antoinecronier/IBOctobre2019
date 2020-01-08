@@ -5,6 +5,7 @@
     xmlns:local="using:UWPLesson1.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customcomponents="using:UWPLesson1.Views.CustomComponents"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -38,5 +39,27 @@
         <TextBlock Style="{StaticResource LoginUCTextblock}" x:Name="txtBPassword" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">Password</TextBlock>
         <PasswordBox x:Name="inputPassword" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"></PasswordBox>
         <Button  Style="{StaticResource LoginUCButton}" x:Name="btnConnexion" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" MaxWidth="200" HorizontalAlignment="Stretch" VerticalAlignment="Center">Connexion</Button>
+        <customcomponents:MyTextBox Grid.Row="1" Grid.Column="0" x:Name="myTextBox"/>
+        <ComboBox PlaceholderText="Select it" Header="Selecteur" Grid.Row="1" Grid.Column="4" x:Name="combo1">
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Hey</TextBlock>
+                    <TextBox PlaceholderText="Hoooooo"></TextBox>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Plop</TextBlock>
+                    <TextBox PlaceholderText="Hiiiiii"></TextBox>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <TextBlock Text="coucou"/>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <customcomponents:MyTextBox x:Name="myTextBox2"/>
+            </ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxByCode" Grid.Row="2" Grid.Column="4"></ComboBox>
     </Grid>
 </UserControl>

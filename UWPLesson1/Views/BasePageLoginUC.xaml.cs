@@ -23,8 +23,37 @@ namespace UWPLesson1.Views
         public BasePageLoginUC()
         {
             this.InitializeComponent();
+            this.Loaded += BasePageLoginUC_Loaded;
             this.btnConnexion.Click += BtnConnexion_Click;
             this.hellButton.PointerEntered += HellButton_PointerEntered;
+            this.comboBoxByCode.SelectionChanged += ComboBoxByCode_SelectionChanged;
+        }
+
+        private List<Object> comboboxSelectedItems = new List<object>();
+        private void ComboBoxByCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboboxSelectedItems.AddRange(e.AddedItems);
+            foreach (var item in e.RemovedItems)
+            {
+                comboboxSelectedItems.Remove(item);
+            }
+
+            foreach (var item in comboboxSelectedItems)
+            {
+                Debug.WriteLine(item);
+            }
+
+            Debug.WriteLine(this.comboBoxByCode.SelectedItem);
+        }
+
+        private void BasePageLoginUC_Loaded(object sender, RoutedEventArgs e)
+        {
+            var resources = new Windows.ApplicationModel.Resources.ResourceLoader("MyStrings");
+            this.inputLogin.Text = resources.GetString("Welcome");
+
+            this.myTextBox.TextBox.Text = "test";
+
+            this.comboBoxByCode.ItemsSource = new List<String> {"a","b","c"};
         }
 
         private void HellButton_PointerEntered(object sender, PointerRoutedEventArgs e)
