@@ -9,8 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <TextBlock x:Name="txtB1" Text="{Binding Firstname}"/>
-        <TextBlock x:Name="txtB2" Text="{Binding Lastname}"/>
-        <TextBlock x:Name="txtB3" Text="{Binding FullName}"/>
+        <TextBox x:Name="txtB1" Text="{Binding Firstname, Mode=TwoWay}"/>
+        <TextBox x:Name="txtB2" Text="{Binding Lastname, Mode=TwoWay}"/>
+        <TextBlock x:Name="txtB3" Text="{Binding FullName, Mode=OneWay}"/>
+        <Button x:Name="btn1">PrintToConsole</Button>
+        <Button x:Name="btn2">Reset</Button>
     </StackPanel>
 </Page>

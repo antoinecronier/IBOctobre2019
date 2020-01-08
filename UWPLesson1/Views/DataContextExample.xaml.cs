@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,18 +30,27 @@ namespace UWPLesson1.Views
         {
             this.InitializeComponent();
             this.User = new User();
-            //this.User = new User() { Firstname = "jean", Lastname = "Michel" };
             this.DataContext = this.User;
 
             this.Loaded += DataContextExample_Loaded;
+            this.btn1.Click += Btn1_Click;
+            this.btn2.Click += Btn2_Click;
+        }
+
+        private void Btn2_Click(object sender, RoutedEventArgs e)
+        {
+            this.User.Firstname = "jean";
+            this.User.Lastname = "Michel";
+            this.UpdateLayout();
+        }
+
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(this.User.FullName);
         }
 
         private void DataContextExample_Loaded(object sender, RoutedEventArgs e)
         {
-            this.User.Firstname = "jean";
-            this.User.Lastname = "Michel";
-
-            this.DataContext = this.User;
         }
     }
 }
