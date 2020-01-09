@@ -26,22 +26,6 @@ namespace UWPTP3.Views
         public RoleCheckPage()
         {
             this.InitializeComponent();
-            this.roleEdit.btnValider.Click += BtnValider_Click;
-            this.roleList.listView.SelectionChanged += ListView_SelectionChanged;
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count > 0)
-            {
-                //this.roleShow.Role = e.AddedItems.ElementAt(0) as Role;
-                this.roleShow.Role.CopyFrom(e.AddedItems.ElementAt(0) as Role);
-            }
-        }
-
-        private void BtnValider_Click(object sender, RoutedEventArgs e)
-        {
-            this.roleList.RoleList.Add(this.roleEdit.Role.Copy() as Role);
         }
     }
 }
