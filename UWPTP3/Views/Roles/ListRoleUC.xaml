@@ -8,6 +8,7 @@
     xmlns:MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
     <Grid x:Name="mainGrid">
@@ -20,6 +21,12 @@
         <ListView x:Name="listView" Grid.Column="1" Grid.Row="1" 
                    ItemsSource="{Binding Roles}"
                    SelectedItem="{Binding ListView.SelectedItem, Mode=TwoWay}">
+
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="SelectionChanged">
+                    <Core:InvokeCommandAction Command="{Binding ListView.SelectionChanged}" />
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
