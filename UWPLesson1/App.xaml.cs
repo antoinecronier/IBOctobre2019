@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UWPLesson1.Views;
+using UWPLesson1.Views.MVVMLight;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -67,7 +68,7 @@ namespace UWPLesson1
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    rootFrame.Navigate(typeof(DataContextExample), e.Arguments);
+                    rootFrame.Navigate(typeof(BlankPage), e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
                 Window.Current.Activate();

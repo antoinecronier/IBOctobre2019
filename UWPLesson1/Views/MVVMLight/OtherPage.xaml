@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="UWPLesson1.Views.MVVMLight.OtherPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPLesson1.Views.MVVMLight"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding OtherPageInstance, Source={StaticResource Locator}}"
+    >
+
+    <StackPanel>
+        <TextBox x:Name="txtB1" Text="{Binding User.Firstname, Mode=TwoWay}"/>
+        <TextBox x:Name="txtB2" Text="{Binding User.Lastname, Mode=TwoWay}"/>
+        <TextBlock x:Name="txtB3" Text="{Binding User.FullName, Mode=OneWay}"/>
+        <Button x:Name="btn1" Command="{Binding ButtonClick}" Content="{Binding ButtonContent, Mode=OneTime}"/>
+    </StackPanel>
+</Page>

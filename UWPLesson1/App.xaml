@@ -2,6 +2,7 @@
     x:Class="UWPLesson1.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:UWPLesson1.Views.MVVMLight"
     xmlns:local="using:UWPLesson1">
 
     <Application.Resources>
@@ -11,6 +12,7 @@
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock" BasedOn="{StaticResource LoginUCTextblock}"></Style>
             <Style TargetType="Button" BasedOn="{StaticResource LoginUCButton}"></Style>
+            <vm:ViewModelLocator xmlns:vm="using:UWPLesson1.Views.MVVMLight" x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

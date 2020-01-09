@@ -48,5 +48,11 @@ namespace UWPLesson1.Entities
         public String FullName {
             get { return this.Lastname + this.Firstname; }
         }
+
+        public void CopyFrom(User user)
+        {
+            this.Firstname = user.Firstname;
+            this.Lastname = user.Lastname;
+        }
     }
 }

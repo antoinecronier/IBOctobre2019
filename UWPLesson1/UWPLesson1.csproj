@@ -145,6 +145,19 @@
     <Compile Include="Views\DataContextExample.xaml.cs">
       <DependentUpon>DataContextExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MVVMLight\BlankPage.xaml.cs">
+      <DependentUpon>BlankPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MVVMLight\BlankPageViewModel.cs" />
+    <Compile Include="Views\MVVMLight\OtherPage.xaml.cs">
+      <DependentUpon>OtherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MVVMLight\OtherPageViewModel.cs" />
+    <Compile Include="Views\MVVMLight\ViewModelLocator.cs" />
+    <Compile Include="Views\MVVMPage.xaml.cs">
+      <DependentUpon>MVVMPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MVVMPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -208,6 +221,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MVVMLight\BlankPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MVVMLight\OtherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MVVMPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Styles\LoginUCStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,6 +241,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
