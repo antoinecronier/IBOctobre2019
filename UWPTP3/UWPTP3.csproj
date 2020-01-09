@@ -126,6 +126,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\MvvmLight\ViewModelLocator.cs" />
     <Compile Include="Views\UserAdvanceCheckPage.xaml.cs">
       <DependentUpon>UserAdvanceCheckPage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +164,16 @@
     <Compile Include="Views\Users\ShowUserUC.xaml.cs">
       <DependentUpon>ShowUserUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Views\ViewModels\RoleCheckPageViewModel.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\Commons\ButtonAccessor.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\Commons\ListViewAccessor.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\RolePageAccessor.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\Roles\RoleEditAccessor.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\Roles\RoleListAccessor.cs" />
+    <Compile Include="Views\ViewModels\UcAccessors\Roles\RoleShowAccessor.cs" />
+    <Compile Include="Views\ViewModels\UserAdvanceCheckPageViewModel.cs" />
+    <Compile Include="Views\ViewModels\UserCheckPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -241,6 +252,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

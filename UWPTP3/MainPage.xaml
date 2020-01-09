@@ -8,10 +8,18 @@
     xmlns:UCRole="using:UWPTP3.Views.Roles"
     xmlns:UCUser="using:UWPTP3.Views.Users"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding MainPageInstance, Source={StaticResource Locator}}"
+    >
 
     <Grid>
-        <UCUser:EditAdvanceUserUC Width="400" Height="500"/>
-        <!--<UCRole:EditRoleUC Width="200" Height="60"></UCRole:EditRoleUC>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btn1" Grid.Column="0" Command="{Binding Btn1Command}" Content="{Binding Btn1Text}"/>
+        <Button x:Name="btn2" Grid.Column="1" Command="{Binding Btn2Command}" Content="{Binding Btn2Text}"/>
+        <Button x:Name="btn3" Grid.Column="2" Command="{Binding Btn3Command}" Content="{Binding Btn3Text}"/>
     </Grid>
 </Page>

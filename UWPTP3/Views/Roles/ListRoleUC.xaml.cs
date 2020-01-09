@@ -21,18 +21,9 @@ namespace UWPTP3.Views.Roles
 {
     public sealed partial class ListRoleUC : UserControlBase
     {
-        public ObservableCollection<Role> RoleList { get; set; }
-
         public ListRoleUC()
         {
             this.InitializeComponent();
-            this.RoleList = new ObservableCollection<Role>();
-            this.DataContext = RoleList;
-        }
-
-        private void MenuFlyoutDelete_Click(object sender, RoutedEventArgs e)
-        {
-            this.RoleList.Remove(sender as Role);
         }
     }
 }

@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="txtBName" Text="Name" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox x:Name="inputName" Text="{Binding Name, Mode=TwoWay}"  Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <Button x:Name="btnValider" Content="Valider" x:FieldModifier="public" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="inputName" Text="{Binding Role.Name, Mode=TwoWay}"  Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Button x:Name="btnValider" Content="{Binding Button.Content}" Command="{Binding Button.Action}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </views:UserControlBase>

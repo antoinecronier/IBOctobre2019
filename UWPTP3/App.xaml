@@ -2,6 +2,12 @@
     x:Class="UWPTP3.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:UWPTP3.Views.MvvmLight"
     xmlns:local="using:UWPTP3">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator xmlns:vm="using:UWPTP3.Views.MvvmLight" x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

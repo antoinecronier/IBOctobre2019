@@ -20,20 +20,9 @@ namespace UWPTP3.Views.Roles
 {
     public sealed partial class EditRoleUC : UserControlBase
     {
-        private Role role;
-
-        public Role Role
-        {
-            get { return role; }
-            set { role = value;}
-        }
-
-
         public EditRoleUC()
         {
             this.InitializeComponent();
-            this.Role = new Role();
-            this.DataContext = Role;
         }
     }
 }
