@@ -21,7 +21,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <roleUc:ListRoleUC DataContext="{Binding Datas.ListRole}" x:Name="roleList" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+            <roleUc:ListRoleUC x:Name="roleList" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
             <roleUc:EditRoleUC x:Name="roleEdit" Grid.Row="0" Grid.Column="1"/>
             <roleUc:ShowRoleUC x:Name="roleShow" Grid.Row="1" Grid.Column="1"/>
         </Grid>

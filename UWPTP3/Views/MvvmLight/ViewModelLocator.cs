@@ -27,27 +27,27 @@ namespace UWPTP3.Views.MvvmLight
             SimpleIoc.Default.Register<INavigationService>(() =>
             {
                 var navigationService = new NavigationService();
-                navigationService.Configure(Pages.UserAdvanceCheckPage.ToString(), typeof(UserAdvanceCheckPage));
-                navigationService.Configure(Pages.UserCheckPage.ToString(), typeof(UserCheckPage));
+                //navigationService.Configure(Pages.UserAdvanceCheckPage.ToString(), typeof(UserAdvanceCheckPage));
+                //navigationService.Configure(Pages.UserCheckPage.ToString(), typeof(UserCheckPage));
                 navigationService.Configure(Pages.RoleCheckPage.ToString(), typeof(RoleCheckPage));
                 navigationService.Configure(Pages.MainPage.ToString(), typeof(MainPage));
                 return navigationService;
             });
-            SimpleIoc.Default.Register<UserAdvanceCheckPageViewModel>();
-            SimpleIoc.Default.Register<UserCheckPageViewModel>();
+            //SimpleIoc.Default.Register<UserAdvanceCheckPageViewModel>();
+            //SimpleIoc.Default.Register<UserCheckPageViewModel>();
             SimpleIoc.Default.Register<RoleCheckPageViewModel>();
             SimpleIoc.Default.Register<MainPageViewModel>();
         }
 
-        public UserAdvanceCheckPageViewModel UserAdvanceCheckPageInstance
-        {
-            get { return ServiceLocator.Current.GetInstance<UserAdvanceCheckPageViewModel>(); }
-        }
+        //public UserAdvanceCheckPageViewModel UserAdvanceCheckPageInstance
+        //{
+        //    get { return ServiceLocator.Current.GetInstance<UserAdvanceCheckPageViewModel>(); }
+        //}
 
-        public UserCheckPageViewModel UserCheckPageInstance
-        {
-            get { return ServiceLocator.Current.GetInstance<UserCheckPageViewModel>(); }
-        }
+        //public UserCheckPageViewModel UserCheckPageInstance
+        //{
+        //    get { return ServiceLocator.Current.GetInstance<UserCheckPageViewModel>(); }
+        //}
 
         public RoleCheckPageViewModel RoleCheckPageInstance
         {
