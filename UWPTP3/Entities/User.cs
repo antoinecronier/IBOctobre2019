@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace UWPTP3.Entities
 {
+    [Table("user")]
     public class User : EntityBase
     {
         private String firstname;
 
+        [Column("firstname")]
+        [NotNull]
         public String Firstname
         {
             get { return firstname; }
@@ -22,6 +27,8 @@ namespace UWPTP3.Entities
 
         private String lastname;
 
+        [Column("lastname")]
+        [NotNull]
         public String Lastname
         {
             get { return lastname; }
@@ -34,6 +41,7 @@ namespace UWPTP3.Entities
 
         private Role role;
 
+        [ManyToOne("RoleId")]
         public Role Role
         {
             get { return role; }
@@ -43,6 +51,16 @@ namespace UWPTP3.Entities
                 OnPropertyChanged("Role");
             }
         }
+
+        private int roleId;
+
+        [ForeignKey(typeof(Role))]
+        public int RoleId
+        {
+            get { return roleId; }
+            set { roleId = value; }
+        }
+
 
         public override object Copy()
         {

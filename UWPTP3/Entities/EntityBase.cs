@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace UWPTP3.Entities
     {
         private int id;
 
+        [PrimaryKey, AutoIncrement]
         public int Id
         {
             get { return id; }

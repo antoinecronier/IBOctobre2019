@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace UWPTP3.Entities
 {
+    [Table("role")]
     public class Role : EntityBase
     {
         private String name;
 
+        [Column("name")]
+        [Unique]
+        [NotNull]
         public String Name
         {
             get { return name; }

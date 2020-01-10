@@ -62,8 +62,8 @@ namespace UWP_Lesson.ViewModels
                 {
                     StorageFolder localFolder = ApplicationData.Current.LocalFolder;
                     StorageFile myFile = await localFolder.CreateFileAsync("myFile.txt",
-                        CreationCollisionOption.ReplaceExisting);
-                    await FileIO.WriteTextAsync(myFile, this.Field1 + "." + this.Field2);
+                        CreationCollisionOption.OpenIfExists);
+                    await FileIO.AppendTextAsync(myFile, this.Field1 + "." + this.Field2);
                 });
             }
         }

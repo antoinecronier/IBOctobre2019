@@ -5,8 +5,6 @@
     xmlns:local="using:UWPTP3"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:UCRole="using:UWPTP3.Views.Roles"
-    xmlns:UCUser="using:UWPTP3.Views.Users"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{Binding MainPageInstance, Source={StaticResource Locator}}"

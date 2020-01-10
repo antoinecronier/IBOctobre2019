@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UWPTP3.Services;
 using UWPTP3.Views.ViewModels;
 
 namespace UWPTP3.Views.MvvmLight
@@ -37,6 +38,11 @@ namespace UWPTP3.Views.MvvmLight
             //SimpleIoc.Default.Register<UserCheckPageViewModel>();
             SimpleIoc.Default.Register<RoleCheckPageViewModel>();
             SimpleIoc.Default.Register<MainPageViewModel>();
+
+            SimpleIoc.Default.Register<DatabaseService>(() =>
+            {
+                return new DatabaseService();
+            },true);
         }
 
         //public UserAdvanceCheckPageViewModel UserAdvanceCheckPageInstance
