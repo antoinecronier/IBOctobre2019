@@ -48,19 +48,26 @@ namespace UWPTP3.Views.ViewModels
 
         private async void WebServiceManagerTester()
         {
-            User user = new User() { Firstname = "jean", Lastname = "Michel", Role = new Role() { Name="role1" } };
-            Debug.WriteLine(JsonConvert.SerializeObject(user));
-            String json = "{\"Firstname\":\"jean\",\"Lastname\":\"Michel\",\"Role\":{\"Name\":\"role1\",\"Id\":0},\"RoleId\":0,\"Id\":0}";
-            User serU = JsonConvert.DeserializeObject<User>(json);
 
-            WebServiceManager<Post> postManager = new WebServiceManager<Post>("https://jsonplaceholder.typicode.com/");
-            Post post1 = await postManager.Get(1);
-            List<Post> posts = await postManager.Get();
-            Post postPost = new Post() { body = "coucou", title = "test", userId = 1 };
-            Post postPostResult = await postManager.Post(postPost);
-            postPostResult.title = "toto";
-            await postManager.Put(postPostResult);
-            await postManager.Delete(postPostResult);
+            WebServiceManager<Service> servicesManager = new WebServiceManager<Service>("http://localhost:54223/api/");
+            List<Service> services = await servicesManager.Get();
+            foreach (var item in services)
+            {
+                Debug.WriteLine(item.ToString());
+            }
+            //User user = new User() { Firstname = "jean", Lastname = "Michel", Role = new Role() { Name="role1" } };
+            //Debug.WriteLine(JsonConvert.SerializeObject(user));
+            //String json = "{\"Firstname\":\"jean\",\"Lastname\":\"Michel\",\"Role\":{\"Name\":\"role1\",\"Id\":0},\"RoleId\":0,\"Id\":0}";
+            //User serU = JsonConvert.DeserializeObject<User>(json);
+
+            //WebServiceManager<Post> postManager = new WebServiceManager<Post>("https://jsonplaceholder.typicode.com/");
+            //Post post1 = await postManager.Get(1);
+            //List<Post> posts = await postManager.Get();
+            //Post postPost = new Post() { body = "coucou", title = "test", userId = 1 };
+            //Post postPostResult = await postManager.Post(postPost);
+            //postPostResult.title = "toto";
+            //await postManager.Put(postPostResult);
+            //await postManager.Delete(postPostResult);
         }
 
         public ICommand Btn3Command

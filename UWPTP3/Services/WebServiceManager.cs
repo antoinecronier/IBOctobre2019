@@ -22,7 +22,7 @@ namespace UWPTP3.Services
         public async Task<T> Get(Int32 id)
         {
             T item = default(T);
-            String url = typeof(T).Name.ToLower() + "s" + "/" + id + "/";
+            String url = typeof(T).Name + "s" + "/" + id + "/";
             item = await HttpClientCaller<T>(url, item);
             return item;
         }
@@ -30,7 +30,7 @@ namespace UWPTP3.Services
         public async Task<List<T>> Get()
         {
             List<T> item = default(List<T>);
-            String url = typeof(T).Name.ToLower() + "s" + "/";
+            String url = typeof(T).Name + "s" + "/";
             item = await HttpClientCaller<List<T>>(url, item);
             return item;
         }
@@ -38,7 +38,7 @@ namespace UWPTP3.Services
         public async Task<T> Post(T item)
         {
             T result = default(T);
-            String url = typeof(T).Name.ToLower() + "s" + "/";
+            String url = typeof(T).Name + "s" + "/";
             result = await HttpClientSender<T>(url, item, result);
 
             return result;
@@ -47,7 +47,7 @@ namespace UWPTP3.Services
         public async Task<T> Put(T item)
         {
             T result = default(T);
-            String url = typeof(T).Name.ToLower() + "s" + "/" + item.Id + "/";
+            String url = typeof(T).Name + "s" + "/" + item.Id + "/";
             result = await HttpClientPuter<T>(url, item, result);
 
             return result;
@@ -56,7 +56,7 @@ namespace UWPTP3.Services
         public async Task<T> Delete(T item)
         {
             T result = default(T);
-            String url = typeof(T).Name.ToLower() + "s" + "/" + item.Id + "/";
+            String url = typeof(T).Name + "s" + "/" + item.Id + "/";
             result = await HttpClientDeleter<T, T>(url, item, result);
 
             return result;

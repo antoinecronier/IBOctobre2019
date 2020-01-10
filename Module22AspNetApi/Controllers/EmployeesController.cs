@@ -25,14 +25,14 @@ namespace Module22AspNetApi.Controllers
         }
 
         [HttpGet]
-        [Route("/EmployeesWithService")]
+        [Route("EmployeesWithService")]
         public IQueryable<Employee> GetEmployeesWithService()
         {
             return db.Employees.Include(x => x.Department);
         }
 
         [HttpGet]
-        [Route("/EmployeesByLastname")]
+        [Route("EmployeesByLastname")]
         public IQueryable<Employee> GetEmployeesByLastname(string choice)
         {
             return db.Employees.Where(x => x.Lastname.Contains(choice));
