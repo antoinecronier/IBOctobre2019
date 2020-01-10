@@ -21,9 +21,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <roleUc:ListRoleUC x:Name="roleList" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
-            <roleUc:EditRoleUC x:Name="roleEdit" Grid.Row="0" Grid.Column="1"/>
-            <roleUc:ShowRoleUC x:Name="roleShow" Grid.Row="1" Grid.Column="1"/>
+            <roleUc:ListRoleUC DataContext="{Binding Datas.RoleList, Mode=TwoWay}" x:Name="roleList" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+            <roleUc:EditRoleUC DataContext="{Binding Datas.RoleEdit, Mode=TwoWay}" x:Name="roleEdit" Grid.Row="0" Grid.Column="1"/>
+            <roleUc:ShowRoleUC DataContext="{Binding Datas.RoleShow, Mode=TwoWay}" x:Name="roleShow" Grid.Row="1" Grid.Column="1"/>
         </Grid>
     </ScrollViewer>
 </Page>

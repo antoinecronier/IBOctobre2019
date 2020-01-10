@@ -21,7 +21,6 @@
         <ListView x:Name="listView" Grid.Column="1" Grid.Row="1" 
                    ItemsSource="{Binding Roles}"
                    SelectedItem="{Binding ListView.SelectedItem, Mode=TwoWay}">
-
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="SelectionChanged">
                     <Core:InvokeCommandAction Command="{Binding ListView.SelectionChanged}" />

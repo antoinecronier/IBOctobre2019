@@ -47,6 +47,11 @@ namespace UWPTP3.Views.ViewModels
 
         private void RoleListSelectionChanged()
         {
+            Role role = Datas.RoleList.ListView.SelectedItem;
+            if (role != null)
+            {
+                Datas.RoleShow.Role.CopyFrom(role);
+            }
         }
 
         private void SetupRoleEdit()
@@ -58,7 +63,9 @@ namespace UWPTP3.Views.ViewModels
 
         private void RoleEditCommand()
         {
-
+            Role role = new Role();
+            role.CopyFrom(Datas.RoleEdit.Role);
+            Datas.RoleList.Roles.Add(role);
         }
     }
 }
